@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: feed
+  labels:
+    app: feed
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: feed
+  template:
+    metadata:
+      labels:
+        app: feed
+    spec:
+      containers:
+      - name: feed
+        image: spelloux/udagram-api-feed:v1
+        ports:
+        - containerPort: 8080
+        envFrom:
+        - configMapRef:
+            name: env-configmap
+        - secretRef:
+            name: env-pg-secrets
+        volumeMounts:
+        - name: env-aws
+          mountPath: "/root/.aws/"
+        imagePullPolicy: Always
+      volumes:
+        - name: env-aws
+          configMap:
+            name: env-aws      
