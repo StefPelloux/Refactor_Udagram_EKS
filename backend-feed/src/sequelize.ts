@@ -6,7 +6,7 @@ export const sequelize = new Sequelize({
   username: 'postgres',
   password: 'petitponey',
   database: 'postgres',
-  host: "172.20.203.176",
+  host: "db.default.svc.cluster.local",
   dialect: 'postgres',
   storage: ':memory:'
 });
