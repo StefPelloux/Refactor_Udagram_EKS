@@ -7,7 +7,7 @@ export const config = {
   'aws_region': 'eu-west-1',
   'aws_profile': 'default',
   'aws_media_bucket': 'tcn-my-bucket',
-  'url': 'http://localhost:8100',
+  'url': 'http://frontend.default.svc.cluster.local:8100',
   'jwt': {
     'secret': 'testing',
    },
