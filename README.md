@@ -42,7 +42,8 @@ Db based on postgres docker image
 
 ### 2. S3
 Create an AWS S3 bucket. The S3 bucket is used to store images that are displayed in Udagram.
-Set the config values for environment variables prefixed with `AWS_` in `set_env.sh`.
+Set the config values in aws_credential.yaml
+
 Exemple here tcn-my-bucket
 
 ### 3. Backend API
@@ -57,5 +58,30 @@ Docker images based on  beevelop/ionic:v2021.06.1
 
 Reverse proxy nginx
 
+
+####### Deploy:
+
+Start : config-script.sh
+Start : service.sh
+
+Start: deploy_script.sh
+
+
+### To test :
+
+kubectl port-forward service/reverseproxy 8080:8080
+kubectl port-forward service/frontend 8100:8100
+
+http://localhost:8100
+
+
+
+
+### To expose :
+
+kubectl expose deployment reverseproxy --type=LoadBalancer --name=publicreverseproxy
+kubectl expose deployment frontend --type=LoadBalancer --name=publicfrontend
+
+htpp://localhost
 
 
